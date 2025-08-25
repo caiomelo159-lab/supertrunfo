@@ -53,7 +53,7 @@ int main() {
     struct Carta carta1, carta2;
 
     printf("=== Cadastro de Cartas Super Trunfo (Cidades) ===\n");
-
+    printf("=====ATENÇÃO: NÃO USAR CARACTERES ESPECIAIS OU ACENTOS");
     // Cadastro da primeira carta
     printf("\n--- Primeira Carta ---\n");
 
