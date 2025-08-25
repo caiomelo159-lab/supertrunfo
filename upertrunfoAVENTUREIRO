@@ -1,1 +1,127 @@
+#include <stdio.h>
+#include <string.h>
+
+// Estrutura da carta
+struct Carta {
+    char estado;                // Letra de 'A' a 'H'
+    char codigo[4];             // Ex: "A01"
+    char nomeCidade[50];        // Nome da cidade
+    int populacao;              // Número de habitantes
+    float area;                 // Área em km²
+    float pib;                  // PIB
+    int numPontosTuristicos;    // Pontos turísticos
+};
+
+// Funções de comparação
+void compararPopulacao(struct Carta c1, struct Carta c2) {
+    if (c1.populacao > c2.populacao)
+        printf("\nNa categoria POPULACAO, %s vence!\n", c1.nomeCidade);
+    else if (c2.populacao > c1.populacao)
+        printf("\nNa categoria POPULACAO, %s vence!\n", c2.nomeCidade);
+    else
+        printf("\nNa categoria POPULACAO, houve empate!\n");
+}
+
+void compararArea(struct Carta c1, struct Carta c2) {
+    if (c1.area > c2.area)
+        printf("Na categoria AREA, %s vence!\n", c1.nomeCidade);
+    else if (c2.area > c1.area)
+        printf("Na categoria AREA, %s vence!\n", c2.nomeCidade);
+    else
+        printf("Na categoria AREA, houve empate!\n");
+}
+
+void compararPIB(struct Carta c1, struct Carta c2) {
+    if (c1.pib > c2.pib)
+        printf("Na categoria PIB, %s vence!\n", c1.nomeCidade);
+    else if (c2.pib > c1.pib)
+        printf("Na categoria PIB, %s vence!\n", c2.nomeCidade);
+    else
+        printf("Na categoria PIB, houve empate!\n");
+}
+
+void compararPontosTuristicos(struct Carta c1, struct Carta c2) {
+    if (c1.numPontosTuristicos > c2.numPontosTuristicos)
+        printf("Na categoria PONTOS TURISTICOS, %s vence!\n", c1.nomeCidade);
+    else if (c2.numPontosTuristicos > c1.numPontosTuristicos)
+        printf("Na categoria PONTOS TURISTICOS, %s vence!\n", c2.nomeCidade);
+    else
+        printf("Na categoria PONTOS TURISTICOS, houve empate!\n");
+}
+
+int main() {
+    struct Carta carta1, carta2;
+
+    printf("=== Cadastro de Cartas Super Trunfo (Cidades) ===\n");
+
+    // Cadastro da primeira carta
+    printf("\n--- Primeira Carta ---\n");
+
+    printf("Estado (A-H): ");
+    scanf(" %c", &carta1.estado);
+
+    printf("Código da Carta (ex: A01): ");
+    scanf("%s", carta1.codigo);
+
+    getchar(); // limpa buffer
+    printf("Nome da Cidade: ");
+    fgets(carta1.nomeCidade, sizeof(carta1.nomeCidade), stdin);
+    carta1.nomeCidade[strcspn(carta1.nomeCidade, "\n")] = 0;
+
+    printf("População: ");
+    scanf("%d", &carta1.populacao);
+
+    printf("Área (km²): ");
+    scanf("%f", &carta1.area);
+
+    printf("PIB: ");
+    scanf("%f", &carta1.pib);
+
+    printf("Número de Pontos Turísticos: ");
+    scanf("%d", &carta1.numPontosTuristicos);
+
+    // Cadastro da segunda carta
+    printf("\n--- Segunda Carta ---\n");
+
+    printf("Estado (A-H): ");
+    scanf(" %c", &carta2.estado);
+
+    printf("Código da Carta (ex: B02): ");
+    scanf("%s", carta2.codigo);
+
+    getchar(); // limpa buffer
+    printf("Nome da Cidade: ");
+    fgets(carta2.nomeCidade, sizeof(carta2.nomeCidade), stdin);
+    carta2.nomeCidade[strcspn(carta2.nomeCidade, "\n")] = 0;
+
+    printf("População: ");
+    scanf("%d", &carta2.populacao);
+
+    printf("Área (km²): ");
+    scanf("%f", &carta2.area);
+
+    printf("PIB: ");
+    scanf("%f", &carta2.pib);
+
+    printf("Número de Pontos Turísticos: ");
+    scanf("%d", &carta2.numPontosTuristicos);
+
+    // Exibindo cartas cadastradas
+    printf("\n=== Cartas Cadastradas ===\n");
+
+    printf("\nCarta 1:\n Estado: %c\n Código: %s\n Cidade: %s\n População: %d\n Área: %.2f km²\n PIB: %.2f\n Pontos Turísticos: %d\n",
+           carta1.estado, carta1.codigo, carta1.nomeCidade, carta1.populacao, carta1.area, carta1.pib, carta1.numPontosTuristicos);
+
+    printf("\nCarta 2:\n Estado: %c\n Código: %s\n Cidade: %s\n População: %d\n Área: %.2f km²\n PIB: %.2f\n Pontos Turísticos: %d\n",
+           carta2.estado, carta2.codigo, carta2.nomeCidade, carta2.populacao, carta2.area, carta2.pib, carta2.numPontosTuristicos);
+
+    // Comparações
+    printf("\n=== Resultados das Comparações ===\n");
+    compararPopulacao(carta1, carta2);
+    compararArea(carta1, carta2);
+    compararPIB(carta1, carta2);
+    compararPontosTuristicos(carta1, carta2);
+
+    return 0;
+}
 
