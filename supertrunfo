@@ -1,16 +1,82 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <locale.h>
+#include <string.h>
 
+struct Carta {
+    char estado;                // Letra de 'A' a 'H'
+    char codigo[4];             // Ex: "A01", "B03"
+    char nomeCidade[50];        // Nome da cidade
+    int populacao;              // Número de habitantes
+    float area;                 // Área em km²
+    float pib;                  // PIB
+    int numPontosTuristicos;    // Pontos turísticos
+};
 
-int main(){
-   char Carta1 = São Paulo;
-printf("Olá mundão teste de cedilha (ç)\n");
-printf("hello world\n");
-printf("Bem vindo ao desafio Super Trunfo em C do aluno Caio Malveira\n");
-printf("Usuario 1, digite o número de sua carta\n");
-scanf("%d", Carta1);
-printf("sua cidade é, &Carta1 \n\n", Carta1);
-return (0);
+int main() {
+    struct Carta carta1, carta2;
 
+    printf("=== Cadastro de Cartas Super Trunfo (Cidades) ===\n");
+    printf("=====ATENÇÃO: NÃO USAR CARACTERES ESPECIAIS OU ACENTOS");
+
+    // Cadastro da primeira carta
+    printf("\n--- Primeira Carta ---\n");
+
+    printf("Estado (A-H): ");
+    scanf(" %c", &carta1.estado);
+
+    printf("Código da Carta (ex: A01): ");
+    scanf("%s", carta1.codigo);
+
+    getchar(); // limpa buffer do scanf
+    printf("Nome da Cidade: ");
+    fgets(carta1.nomeCidade, sizeof(carta1.nomeCidade), stdin);
+    carta1.nomeCidade[strcspn(carta1.nomeCidade, "\n")] = 0;
+
+    printf("População: ");
+    scanf("%d", &carta1.populacao);
+
+    printf("Área (km²): ");
+    scanf("%f", &carta1.area);
+
+    printf("PIB: ");
+    scanf("%f", &carta1.pib);
+
+    printf("Número de Pontos Turísticos: ");
+    scanf("%d", &carta1.numPontosTuristicos);
+
+    // Cadastro da segunda carta
+    printf("\n--- Segunda Carta ---\n");
+
+    printf("Estado (A-H): ");
+    scanf(" %c", &carta2.estado);
+
+    printf("Código da Carta (ex: B02): ");
+    scanf("%s", carta2.codigo);
+
+    getchar(); // limpa buffer
+    printf("Nome da Cidade: ");
+    fgets(carta2.nomeCidade, sizeof(carta2.nomeCidade), stdin);
+    carta2.nomeCidade[strcspn(carta2.nomeCidade, "\n")] = 0;
+
+    printf("População: ");
+    scanf("%d", &carta2.populacao);
+
+    printf("Área (km²): ");
+    scanf("%f", &carta2.area);
+
+    printf("PIB: ");
+    scanf("%f", &carta2.pib);
+
+    printf("Número de Pontos Turísticos: ");
+    scanf("%d", &carta2.numPontosTuristicos);
+
+    // Exibindo cartas cadastradas
+    printf("\n=== Cartas Cadastradas ===\n");
+
+    printf("\nCarta 1:\n Estado: %c\n Código: %s\n Cidade: %s\n População: %d\n Área: %.2f km²\n PIB: %.2f\n Pontos Turísticos: %d\n",
+           carta1.estado, carta1.codigo, carta1.nomeCidade, carta1.populacao, carta1.area, carta1.pib, carta1.numPontosTuristicos);
+
+    printf("\nCarta 2:\n Estado: %c\n Código: %s\n Cidade: %s\n População: %d\n Área: %.2f km²\n PIB: %.2f\n Pontos Turísticos: %d\n",
+           carta2.estado, carta2.codigo, carta2.nomeCidade, carta2.populacao, carta2.area, carta2.pib, carta2.numPontosTuristicos);
+
+    return 0;
 }
