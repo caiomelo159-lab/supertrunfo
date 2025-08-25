@@ -1,0 +1,16 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <locale.h>
+
+
+int main(){
+   char Carta1 = São Paulo;
+printf("Olá mundão teste de cedilha (ç)\n");
+printf("hello world\n");
+printf("Bem vindo ao desafio Super Trunfo em C do aluno Caio Malveira\n");
+printf("Usuario 1, digite o número de sua carta\n");
+scanf("%d", Carta1);
+printf("sua cidade é, &Carta1 \n\n", Carta1);
+return (0);
+
+}
